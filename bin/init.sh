@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Initializing"
+echo "Initializing..."
 
 # Install Homebrew if not already installed
 if ! command -v brew &> /dev/null; then
@@ -10,6 +10,9 @@ else
   echo "Homebrew is already installed."
 fi
 
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Install Git using Homebrew if not already installed
 if ! command -v git &> /dev/null; then
   echo "Installing Git..."
@@ -18,7 +21,7 @@ else
   echo "Git is already installed."
 fi
 
-git clone https://github.com/dostarora97/wts.git
+git clone https://github.com/dostarora97/wts.git > /dev/null 2>&1
 
 cd wts || exit
 

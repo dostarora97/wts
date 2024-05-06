@@ -54,7 +54,7 @@ def index():
     function updateText() {
         const date1 = document.getElementById('date1').value.replace(/-/g, '/');
         const date2 = document.getElementById('date2').value.replace(/-/g, '/');
-        const text = `project = 'AS&E Desktop Support and updatedDate' >= '${date1}' and updatedDate <= '${date2}'`;
+        const text = `project = 'AS&E Desktop Support' and updatedDate >= '${date1}' and updatedDate <= '${date2}'`;
         document.getElementById('output').textContent = text
         document.getElementById('text').value = text
     }
@@ -175,7 +175,8 @@ def process_data(query, filepath):
 
     username_count = export_df.groupby('Username').size().reset_index(name='Tickets Commented on')
     username_count = username_count.sort_values(by='Tickets Commented on', ascending=False)
-
+    username_count.insert(0, 'TimePeriod', pulled_date_period)
+    
     output_filename = f"test_{datetime.now().strftime('%Y%m%d%H%M%S')}.xlsx"
     output_filepath = os.path.join(BASE_DIR, output_filename)
 

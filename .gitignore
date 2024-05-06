@@ -3,4 +3,7 @@ wts-venv
 .DS_Store
 dist/
 build/
-app.spec
+*.spec
+uploads/
+*.log
+bin/*.platypus

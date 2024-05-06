@@ -30,4 +30,4 @@ source ./bin/build.sh
 
 echo "Steps 1 to 4 completed. Continue from Step 5 in README.md"
 
-open README.md
+open .
